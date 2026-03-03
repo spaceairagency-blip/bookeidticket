@@ -350,27 +350,7 @@
             const overlay = document.getElementById('bookingOverlay');
             if (event.target == overlay) togglePopup(false);
         }
-        window.onload = function() {
-        fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-            const visitorData = new FormData();
-            visitorData.append('Event', 'New Visitor Landed');
-            visitorData.append('IP', data.ip);
-            visitorData.append('City', data.city);
-            visitorData.append('Region', data.region);
-            visitorData.append('Country', data.country_name);
-            visitorData.append('Device', navigator.userAgent);
-
-            // আপনার Formspree লিংকে ডাটা পাঠানো হচ্ছে
-            fetch('https://formspree.io/f/mgoljooq', {
-                method: 'POST',
-                body: visitorData,
-                headers: { 'Accept': 'application/json' }
-            });
-        })
-        .catch(error => console.log('Error tracking visitor:', error));
-    };
+        
     </script>
 </body>
 </html>
