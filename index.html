@@ -11,7 +11,7 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #f0f2f5;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -24,7 +24,7 @@
         
         main { padding: 15px; max-width: 500px; margin: auto; width: 90%; }
 
-        /* --- EVENT PASS STYLING --- */
+        /* --- TICKET STYLING --- */
         .event-card {
             background: #fff;
             border-radius: 25px;
@@ -34,128 +34,159 @@
             border: 1px solid #eee;
             margin-bottom: 30px;
         }
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 8px;
-            background: linear-gradient(90deg, #e74c3c, #27ae60, #2980b9);
+
+        .ticket-img {
+            width: 100%;
+            height: 170px;
+            background: url('https://plus.unsplash.com/premium_photo-1718674394245-9f270c5fd2b3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dGlja2V0fGVufDB8fDB8fHww') center/cover;
+            position: relative;
         }
-        .card-content { padding: 30px 25px; }
-        .event-title { text-align: center; font-size: 1.2em; color: #444; margin-bottom: 25px; font-weight: 600; letter-spacing: 1px; }
-        .time-container { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
-        .time-box { flex: 1; }
-        .time-box span { font-size: 0.75em; color: #999; text-transform: uppercase; display: block; margin-bottom: 5px; }
-        .time-box strong { font-size: 1.5em; color: #333; display: block; }
-        .divider { flex: 0.5; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ddd; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; background: #fdfdfd; padding: 15px; border-radius: 15px; border: 1px dashed #e0e0e0; margin-bottom: 25px; }
+
+        .ticket-img::after {
+            content: 'EID 2026';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 0.7em;
+            color: #fff;
+        }
+
+        /* Ticket Notches */
+        .notch {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #f0f2f5;
+            border-radius: 50%;
+            bottom: 105px;
+            z-index: 5;
+        }
+        .notch-left { left: -15px; box-shadow: inset -5px 0 5px rgba(0,0,0,0.05); }
+        .notch-right { right: -15px; box-shadow: inset 5px 0 5px rgba(0,0,0,0.05); }
+
+        .card-content { padding: 25px; }
+        .event-title { text-align: center; font-size: 1.2em; color: #333; margin-bottom: 25px; font-weight: 700; text-transform: uppercase; }
+        
+        .time-container { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; }
+        .time-box span { font-size: 0.7em; color: #999; text-transform: uppercase; display: block; }
+        .time-box strong { font-size: 1.4em; color: #333; }
+        .divider { color: #f1c40f; font-size: 1.2em; }
+
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; background: #fafafa; padding: 15px; border-radius: 15px; border: 1px dashed #e0e0e0; margin-bottom: 20px; }
         .info-item { text-align: center; }
-        .info-item i { display: block; font-size: 1.2em; color: #555; margin-bottom: 5px; }
-        .info-item label { font-size: 0.65em; color: #888; text-transform: uppercase; }
-        .info-item p { margin: 0; font-size: 0.85em; font-weight: 600; color: #444; }
-        .room-no { margin-bottom: 20px; padding: 0 5px; }
-        .footer { display: flex; justify-content: space-between; align-items: center; border-top: 2px dashed #f0f0f0; padding-top: 20px; }
-        .entry-type { background: #e8f5e9; color: #2e7d32; padding: 5px 12px; border-radius: 20px; font-size: 0.75em; font-weight: bold; }
-        .btn-book { background: #333; color: #fff; border: none; padding: 12px 25px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .info-item i { display: block; font-size: 1.1em; color: #555; margin-bottom: 5px; }
+        .info-item label { font-size: 0.6em; color: #888; text-transform: uppercase; }
+        .info-item p { margin: 0; font-size: 0.8em; font-weight: 600; color: #444; }
+
+        /* Map Link */
+        .location-link { 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center;
+            background: #fdfdfd;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .location-link:hover { background: #f0f7ff; border-color: #d0e7ff; }
+        
+        .footer { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-top: 2px dashed #eee; 
+            padding-top: 20px; 
+        }
+
+        .btn-book { background: #1a1a1a; color: #fff; border: none; padding: 14px 28px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-book:hover { background: #000; transform: translateY(-2px); }
+        .qr-placeholder { width: 55px; height: 55px; background: #333; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8em; }
 
-        /* --- RECENT BOOKINGS LIST --- */
-        #recentBookings { margin-top: 20px; padding-bottom: 40px; }
-        .history-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 15px; }
-        .history-item { background: white; padding: 15px; border-radius: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #27ae60; }
-        .history-info h4 { margin: 0; color: #333; font-size: 0.95em; }
-        .history-info p { margin: 2px 0 0; color: #777; font-size: 0.8em; }
-        .btn-clear { background: none; border: 1px solid #ccc; color: #888; padding: 4px 8px; border-radius: 5px; font-size: 0.7em; cursor: pointer; }
-        .btn-clear:hover { background: #fee; border-color: #e74c3c; color: #e74c3c; }
-
-        /* --- POPUP & FORM STYLING --- */
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; }
-        .booking-form-card { background: white; width: 90%; max-width: 400px; padding: 30px; border-radius: 20px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
+        /* --- POPUP & HISTORY --- */
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; }
+        .booking-form-card { background: white; width: 90%; max-width: 400px; padding: 30px; border-radius: 25px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5em; cursor: pointer; color: #999; }
-        .booking-form-card h2 { margin-top: 0; font-size: 1.4em; color: #333; text-align: center; margin-bottom: 20px; }
-        .booking-form-card label { display: block; font-size: 0.85em; font-weight: 600; color: #666; margin-bottom: 8px; }
-        .booking-form-card input, #age { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 1em; outline: none; transition: border-color 0.3s; }
-        .booking-form-card input:focus { border-color: #27ae60; }
-        .btn-submit { width: 100%; background: #27ae60; color: white; border: none; padding: 14px; border-radius: 10px; font-weight: bold; font-size: 1em; cursor: pointer; transition: 0.3s; }
+        
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 15px; border-bottom: 2px solid #ddd; padding-bottom: 8px; }
+        .history-item { background: white; padding: 15px; border-radius: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #27ae60; }
+        
+        .google-login-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .user-profile-badge { background: #f0f2f5; padding: 10px 15px; border-radius: 50px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border: 1px solid #e0e0e0; }
+
+        .booking-form-card label { display: block; font-size: 0.85em; font-weight: 600; color: #666; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 1em; outline: none; }
+        .btn-submit { width: 100%; background: #27ae60; color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-submit:disabled { background: #95a5a6; cursor: not-allowed; }
 
-        /* Google Section Styling */
-        .google-login-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .user-profile-badge { background: #f0f2f5; padding: 10px 15px; border-radius: 50px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border: 1px solid #e0e0e0; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* --- SUCCESS PAGE STYLING --- */
-        #successMessage { display: none; text-align: center; padding: 20px 0; }
+        #successMessage { display: none; text-align: center; }
         .success-icon { font-size: 4em; color: #27ae60; margin-bottom: 15px; }
-        .success-title { font-size: 1.5em; font-weight: 800; color: #333; margin-bottom: 10px; }
-        .success-text { color: #666; line-height: 1.5; margin-bottom: 25px; }
 
         @media (max-width: 400px) {
-            .time-box strong { font-size: 1.2em; }
-            .info-grid { grid-template-columns: 1fr; gap: 15px; }
+            .info-grid { grid-template-columns: 1fr; }
             .info-item { display: flex; align-items: center; gap: 15px; text-align: left; }
-            .info-item i { margin-bottom: 0; width: 20px; }
         }
+        .mony {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fdfdfd;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
 
     <header>
-        <h1 class="logo">
-            <span class="red">Book</span><span class="green">Eid</span><span class="blue">Ticket</span>
-        </h1>
-        <p style="color: #888; margin-top: 5px;">Get your Eid Celebration Ticket for free.</p>
+        <h1 class="logo"><span class="red">Book</span><span class="green">Eid</span><span class="blue">Ticket</span></h1>
+        <p style="color: #666; margin-top: 5px;">Special Eid Celebration Event in Sreepur, Savar, Dhaka, Bangladesh</p>
     </header>
 
     <main>
         <div class="event-card">
+            <div class="ticket-img"></div>
+            <div class="notch notch-left"></div>
+            <div class="notch notch-right"></div>
+            
             <div class="card-content">
-                <div class="event-title">EID CELEBRATION TICKET <br> 2026</div>
+                <div class="event-title">Eid Celebration Ticket 2026</div>
+
                 <div class="time-container">
-                    <div class="time-box">
-                        <span>Starts</span>
-                        <strong>06:30 PM</strong>
-                    </div>
-                    <div class="divider">
-                        <div style="width: 100%; border-top: 2px dotted #eee;"></div>
-                        <i class="fas fa-star" style="color: #f1c40f; margin-top: 5px;"></i>
-                    </div>
-                    <div class="time-box" style="text-align: right;">
-                        <span>Ends</span>
-                        <strong>7:00 PM</strong>
-                    </div>
+                    <div class="time-box"><span>Arrival</span><strong>07:00 PM</strong></div>
+                    <div class="divider"><i class="fas fa-moon"></i></div>
+                    <div class="time-box" style="text-align: right;"><span>Ends</span><strong>07:30 PM</strong></div>
                 </div>
 
                 <div class="info-grid">
-                    <div class="info-item">
-                        <i class="fas fa-bolt"></i>
-                        <label>DECORATION</label>
-                        <p>RGB Light</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-desktop"></i>
-                        <label>SHOW</label>
-                        <p>Laptop Screen</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-plug"></i>
-                        <label>Power</label>
-                        <p>Mobile Charging</p>
-                    </div>
+                    <div class="info-item"><i class="fas fa-bolt"></i><label>Vibe</label><p>RGB Light</p></div>
+                    <div class="info-item"><i class="fas fa-desktop"></i><label>Show</label><p>Laptop</p></div>
+                    <div class="info-item"><i class="fas fa-plug"></i><label>Power</label><p>Charging</p></div>
                 </div>
 
-                <div class="room-no">
-                    <i class="fas fa-door-open" style="color: #2980b9; margin-right: 8px;"></i>
-                    <span style="font-size: 1.1em; font-weight: 600; color: #333;">Room: SOFA ROOM</span>
-                    <p style="font-size: 0.9em; color: #666; margin-top: 5px;">Aminul Islam's Building 2nd floor, <span class="red">2A</span></p>
-                </div>
-
-                <div class="footer">
+                <a href="https://www.google.com/maps/place/Aminul+Islam/@23.9564865,90.2673907,842m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3755e7ea4c23cc73:0xe50683257a646b2d!8m2!3d23.9564865!4d90.269971!16s%2Fg%2F11rgkzqk9_?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="location-link">
+                    <i class="fas fa-map-marker-alt" style="color: #e74c3c; font-size: 1.4em; margin-right: 15px;"></i>
                     <div>
-                        <span class="entry-type">FREE</span>
-                        <div style="font-size: 1.1em; font-weight: 800; margin-top: 5px; margin-left: 5px;">0.00 Tk</div>
+                        <span style="font-weight: 700; color: #333; display: block; font-size: 0.9em;">Sofa Room, 2nd Floor (2A)</span>
+                        <span style="font-size: 0.75em; color: #2980b9;">Tap to open in Google Maps</span>
                     </div>
+                </a>
+                <div class="mony">
+                    <span style="font-size: 0.75em; color: #888; text-transform: uppercase;">Price</span>
+                    <strong style="font-size: 1.4em; color: #27ae60;">FREE</strong>
+                </div>
+                <div class="footer">
+                    <div class="qr-placeholder"><i class="fas fa-qrcode"></i></div>
                     <button class="btn-book" onclick="togglePopup(true)">BOOK NOW</button>
                 </div>
             </div>
@@ -163,18 +194,18 @@
 
         <div id="recentBookings">
             <div class="history-header">
-                <h3 style="font-size: 1em; color: #444; margin: 0;">Recent Bookings</h3>
-                <button class="btn-clear" onclick="clearHistory()">Clear All</button>
+                <h3 style="font-size: 0.9em; color: #555; margin: 0;">Recent Bookings</h3>
+                <button onclick="clearHistory()" style="background:none; border:1px solid #ccc; color:#888; font-size:0.7em; padding:4px 8px; border-radius:5px; cursor:pointer;">Clear All</button>
             </div>
             <div id="bookingsList"></div>
         </div>
 
         <div class="overlay" id="bookingOverlay">
             <div class="booking-form-card">
-                <span class="close-btn" onclick="togglePopup(false)">&times;</span>
+                <span class="close-btn" onclick="togglePopup(false)">×</span>
                 
                 <div id="formSection">
-                    <h2>Checkout</h2>
+                    <h2 style="text-align: center; margin-top: 0;">Checkout</h2>
 
                     <div id="googleSection" class="google-login-container">
                         <div id="g_id_onload"
@@ -193,18 +224,17 @@
 
                     <form id="bookingForm" action="https://formspree.io/f/mgoljooq" method="post">
                         <div id="manualFields">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            <label>Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter name" required>
+                            <label>Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter email" required>
                         </div>
-                        
-                        <label for="phone">Phone No</label>
+                        <label>Phone No</label>
                         <input type="tel" id="phone" name="phone" required value="+8801">
-
+                        
                         <div style="display: flex; gap: 15px;">
                             <div style="flex: 1;">
-                                <label for="age">Age</label>
+                                <label>Age</label>
                                 <select id="age" name="age" required>
                                     <option value="1-5">1-5</option>
                                     <option value="5-10">5-10</option>
@@ -216,8 +246,8 @@
                                 </select>
                             </div>
                             <div style="flex: 1;">
-                                <label for="person">Persons</label>
-                                <input type="number" id="person" name="person" required value="1" min="1">
+                                <label>Persons</label>
+                                <input type="number" id="person" name="person" value="1" min="1" required>
                             </div>
                         </div>
                         <button type="submit" class="btn-submit" id="submitBtn">Confirm Booking</button>
@@ -226,8 +256,8 @@
 
                 <div id="successMessage">
                     <div class="success-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="success-title">Booking Confirmed!</div>
-                    <p class="success-text">Your entry pass has been registered. Thanks for booking!</p>
+                    <h3>Booking Confirmed!</h3>
+                    <p style="color:#666; font-size: 0.9em; margin-bottom: 20px;">Your pass has been registered successfully. Thanks!</p>
                     <button class="btn-submit" onclick="togglePopup(false)">Great, Thanks!</button>
                 </div>
             </div>
@@ -235,16 +265,7 @@
     </main>
 
     <script>
-        
-        const bookingForm = document.getElementById('bookingForm');
-        const bookingsList = document.getElementById('bookingsList');
-        const submitBtn = document.getElementById('submitBtn');
-        const formSection = document.getElementById('formSection');
-        const successMessage = document.getElementById('successMessage');
-
-        document.addEventListener('DOMContentLoaded', displayBookings);
-
-        // GOOGLE OAUTH HANDLING
+        // GOOGLE JWT DECODER
         function decodeJwtResponse(token) {
             let base64Url = token.split('.')[1];
             let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -256,101 +277,71 @@
 
         function handleCredentialResponse(response) {
             const data = decodeJwtResponse(response.credential);
-            
-            // Fill Hidden/Normal Fields
             document.getElementById('name').value = data.name;
             document.getElementById('email').value = data.email;
-
-            // UI Transformation
             document.getElementById('googleSection').style.display = 'none';
             document.getElementById('manualFields').style.display = 'none';
-            
-            // Show User Badge
-            const badge = document.getElementById('userBadge');
             document.getElementById('welcomeText').innerText = `Signed in as ${data.given_name}`;
-            badge.style.display = 'flex';
+            document.getElementById('userBadge').style.display = 'flex';
         }
 
         function togglePopup(show) {
-            const overlay = document.getElementById('bookingOverlay');
-            overlay.style.display = show ? 'flex' : 'none';
-            if (show) {
-                formSection.style.display = 'block';
-                successMessage.style.display = 'none';
+            document.getElementById('bookingOverlay').style.display = show ? 'flex' : 'none';
+            if(show) {
+                document.getElementById('formSection').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
             }
         }
 
         function clearHistory() {
             if(confirm("Delete all booking history?")) {
                 localStorage.removeItem('eidBookings');
-                displayBookings();
+                display();
             }
         }
 
-        bookingForm.onsubmit = function(e) {
+        document.getElementById('bookingForm').onsubmit = function(e) {
             e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Processing...";
-
-            const formData = new FormData(bookingForm);
-
-            fetch(bookingForm.action, {
-                method: bookingForm.method,
-                body: formData,
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "Processing...";
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    const newBooking = {
-                        id: Date.now(),
-                        name: document.getElementById('name').value,
-                        phone: document.getElementById('phone').value,
-                        age: document.getElementById('age').value,
-                        persons: document.getElementById('person').value,
-                        date: new Date().toLocaleDateString()
+                    const b = { 
+                        name: document.getElementById('name').value, 
+                        p: document.getElementById('person').value, 
+                        d: new Date().toLocaleDateString() 
                     };
-
-                    const existingBookings = JSON.parse(localStorage.getItem('eidBookings') || '[]');
-                    existingBookings.unshift(newBooking);
-                    localStorage.setItem('eidBookings', JSON.stringify(existingBookings));
-
-                    displayBookings();
-                    bookingForm.reset();
-                    
-                    formSection.style.display = 'none';
-                    successMessage.style.display = 'block';
-                } else {
-                    alert('Submission failed. Please check your form.');
+                    const ex = JSON.parse(localStorage.getItem('eidBookings') || '[]');
+                    ex.unshift(b);
+                    localStorage.setItem('eidBookings', JSON.stringify(ex));
+                    display();
+                    document.getElementById('formSection').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
                 }
-            }).catch(() => {
-                alert('Network error. Check your internet connection.');
-            }).finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Confirm Booking";
+            }).finally(() => { 
+                btn.disabled = false;
+                btn.innerText = "Confirm Booking"; 
             });
         };
 
-        function displayBookings() {
-            const bookings = JSON.parse(localStorage.getItem('eidBookings') || '[]');
-            if (bookings.length === 0) {
-                bookingsList.innerHTML = '<p style="color: #999; text-align: center; font-size: 0.9em; margin-top: 20px;">No recent bookings found.</p>';
-                return;
-            }
-            bookingsList.innerHTML = bookings.map(b => `
+        function display() {
+            const list = JSON.parse(localStorage.getItem('eidBookings') || '[]');
+            document.getElementById('bookingsList').innerHTML = list.length ? list.map(x => `
                 <div class="history-item">
-                    <div class="history-info">
-                        <h4>${b.name}</h4>
-                        <p>${b.persons} Person(s) • ${b.date}</p>
-                    </div>
-                    <span style="font-weight: bold; color: #27ae60; font-size: 0.8em;">SUCCESS</span>
+                    <div><strong>${x.name}</strong><br><small>${x.p} Person(s) • ${x.d}</small></div>
+                    <span style="font-weight:bold; color:#27ae60; font-size:0.7em;">SUCCESS</span>
                 </div>
-            `).join('');
-        }
-
-        window.onclick = function(event) {
-            const overlay = document.getElementById('bookingOverlay');
-            if (event.target == overlay) togglePopup(false);
+            `).join('') : '<p style="text-align:center; color:#999; font-size:0.8em;">No bookings yet.</p>';
         }
         
+        display();
+        window.onclick = e => { if (e.target.id == 'bookingOverlay') togglePopup(false); }
     </script>
 </body>
 </html>
